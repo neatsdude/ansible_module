@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Test of the created module
+      execte_query:
+        query: "select * from movie where title='Batman'"
+        dbname: movies
+        dbuser: root
+        dbpass: toor
+        file: yes
+        filename: batman.csv
+      register: out
+
+    - debug: var=out
+...
